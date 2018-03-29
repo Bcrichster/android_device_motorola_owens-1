@@ -14,6 +14,7 @@
 # limitations under the License.
 
 $(call inherit-product, device/motorola/owens/full_owens.mk)
+$(call inherit-product, vendor/bliss/config/common.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 720
