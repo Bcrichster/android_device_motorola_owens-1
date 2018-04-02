@@ -15,11 +15,11 @@
 # limitations under the License.
 
 DEVICE_PATH := device/motorola/owens
-
 PLATFORM_PATH := device/motorola/owens
+VENDOR_PATH := vendor/motorola/owens
 
-VENDOR_PATH := vendor/motorola/qcom318-32/BoardConfigVendor.mk
 -include vendor/motorola/owens/BoardConfigVendor.mk
+-include vendor/motorola/qcom318-32/BoardConfigVendor.mk
 -include vendor/motorola/msm8937-common/BoardConfigVendor.mk
 
 PLATFORM_PATH := device/motorola/owens
@@ -28,11 +28,11 @@ TARGET_SPECIFIC_HEADER_PATH := $(VENDOR_PATH)/include
 
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := owens,owens_retail
-TARGET_KERNEL_CONFIG := owens_defconfig
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # Bootloader
 TARGET_NO_BOOTLOADER := true
+TARGET_BOOTLOADER_BOARD_NAME := MSM8937
 
 # Architecture
 TARGET_ARCH := arm
@@ -51,8 +51,11 @@ BOARD_KERNEL_SEPARATED_DT := true
 TARGET_CUSTOM_DTBTOOL := dtbTool_custom
 BOARD_DTBTOOL_ARGS := -3 -m 1
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+TARGET_BOARD_PLATFORM := msm8937
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno505
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_SOURCE := kernel/motorola/msm8937
+TARGET_KERNEL_CONFIG := owens_defconfig
 BLISS_KRAIT := true
 BLISS_PIPE := true
 BLISS_DEVELOPER := bcrichster
@@ -76,7 +79,7 @@ USE_CUSTOM_AUDIO_POLICY := 1
 #USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(VENDOR_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_READ_ADDR_FROM_PROP := true
@@ -106,7 +109,7 @@ TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
 
 # Filesystem
-TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(VENDOR_PATH)/android_filesystem_config.h
+TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(DEVICE_PATH)/include/private/android_filesystem_config.h
 
 # FM
 BOARD_HAVE_QCOM_FM := true
@@ -154,9 +157,6 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-
-# Release Tools
-TARGET_RELEASETOOLS_EXTENSIONS := $(VENDOR_PATH)
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
