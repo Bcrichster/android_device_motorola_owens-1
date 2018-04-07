@@ -16,15 +16,12 @@
 
 DEVICE_PATH := device/motorola/owens
 PLATFORM_PATH := device/motorola/owens
-VENDOR_PATH := vendor/motorola/owens
 
 -include vendor/motorola/owens/BoardConfigVendor.mk
 -include vendor/motorola/qcom318-32/BoardConfigVendor.mk
 -include vendor/motorola/msm8937-common/BoardConfigVendor.mk
 
-PLATFORM_PATH := device/motorola/owens
-
-TARGET_SPECIFIC_HEADER_PATH := $(VENDOR_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := owens,owens_retail
